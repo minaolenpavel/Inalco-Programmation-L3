@@ -1,0 +1,27 @@
+# Ignore executables
+*.exe
+*.out
+*.elf
+*.bin
+
+# Ignore object files
+*.o
+
+# Ignore debug symbols
+*.dbg
+
+# Ignore core dump files
+core.*
+
+# Ignore compiler-generated files
+*.dSYM
+*.swp
+*.swo
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore operating system files
+.DS_Store
+Thumbs.db
