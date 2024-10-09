@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <math.h>
+
+int int_pow(int base, int exponent) {
+    int result = 1;
+    for(int i = 0; i < exponent; i++) {
+        result *= base;
+    }
+    return result;
+}
 
 // Function to get the length of an integer
 int length_int(int i){
@@ -21,7 +30,7 @@ int length_int(int i){
 
 int length_array(int* array){
     int length = sizeof(array)/sizeof(array[0]);
-    return length;
+    return length+1;
 }
 
 int* split_numbers(int num) {
@@ -47,20 +56,35 @@ int* split_numbers(int num) {
     return numbers;
 }
 
-
+bool is_narcissistic(int num){
+    if(num >= 1 && num<=9){
+        return 1;
+    }
+    else{
+        int* numbers = split_numbers(num);
+        int length = length_array(numbers);
+        int result = 0;
+        for(int i = 0; i<length; i++){
+            result += int_pow(numbers[i], length);
+        }
+        if (result == num){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+}
 
 int main (void) {
     printf("Entrez un nombre et découvrez si il est narcissique : ");
     int num;
     scanf("%d", &num);
-    if(num >= 1 && num<=9){
-        printf("%d est un nombre narcissique !\n", num);
+    if (is_narcissistic(num) == 1){
+        printf("%d est narcissique !\n", num);
     }
     else{
-        int* numbers = split_numbers(num);
-        for(int i = 0; i<length_array(numbers); i++){
-            printf("number 1 is %d\n", numbers[i]);
-        }
+        printf("%d n'est pas narcissique.\n", num);
     }
     return 0;
 }
