@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-char* reverse_array (char* word, char* reversed_word){
+char* reverse_word (char* word, char* reversed_word){
     int length = strlen(word);
     int y = 0;
     // We start the loop at length-1, so we don't count the null character in the end that says it's the end of the string
@@ -19,12 +19,11 @@ int main (void) {
     fgets(word, sizeof(word), stdin);
     // Deletes the newline character that fgets catches
     word[strcspn(word, "\n")] = 0;
-
     char reversed_word[100];
     // Copy of the original word
     // We make the copy here because if the copy is done in the function reverse_array, then the memory allocated for the returned copy
     // ... will not be available at the end of the function, so it will point to an empty place in the memory, and cause segmentation fault
-    strcpy(reversed_word, reverse_array(word, reversed_word));
+    strcpy(reversed_word, reverse_word(word, reversed_word));
     // In C we need to use a special function to compare two strings
     if (strcmp(reversed_word, word) == 0){
         printf("%s est un palindrome !\n", word);
