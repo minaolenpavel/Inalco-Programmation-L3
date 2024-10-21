@@ -2,16 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int firstOccurrence(char *line){
-    for(int i = 0; i<strlen(line); i++){
-        if(line[i] == '*'){
-            return i;
-            break;
-        }
-    }
-    return -1;
-}
-
 int main (void) {
     int num = 0;
     scanf("%d", &num);
