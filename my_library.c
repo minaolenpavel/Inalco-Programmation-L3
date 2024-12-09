@@ -9,3 +9,12 @@ bool is_positive(int number){
         return false;
     }
 }
+
+bool is_even(int number){
+    if (number%2==0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
