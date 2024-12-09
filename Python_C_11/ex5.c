@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../my_library.c"
+#include "../my_lib.c"
 
 int sum(int num){
     if(num <= 1){
