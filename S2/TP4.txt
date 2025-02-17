@@ -1,0 +1,18 @@
+TP Polars :
+
+Sur le fichier comments_100.csv :
+
+1. combien y a t il de colonnes (séries) ?
+2. combien y a t il de lignes (observations) ?
+3. quelle est la moyenne de nombre de likes ?
+4. quelle est l'écart type du nombre de likes ?
+5. afficher les commentaires publiés après le 26/01/2025
+6. afficher les commentaires de "UCziyASnhF8UV7kqhcAAM9ww" (il s'agit d'un channel_id)
+7. diviser tous les éléments dans la colonne like_count par 2
+
+Sur le fichier videos_id :
+
+1. quelle est la moyenne du nombre de likes pour les vidéos avec un nombre de vues supérieur à 70 000 ?
+2. quelle est la somme du nombre de likes pour les vidéos sans transcriptions ?
+3. enregistrer dans un fichier CSV "question_3.csv" les vidéos de la catégorie "Entertainment"
+4. enregistrer dans un fichier JSON "question_4.json" uniquement les colonnes "channel_id" et "tags"
