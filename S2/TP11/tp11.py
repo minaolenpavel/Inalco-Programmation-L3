@@ -14,7 +14,7 @@ def load_tsv(path:str) -> list:
         reader = csv.reader(tsv_file, delimiter="\t")
         for row in reader:
             loaded_tsv.append(row)
-    print(loaded_tsv)
+    return loaded_tsv
 
 def write_annotations(annotations:list) -> None:
     with  open("TP11/annotations_automatiques.tsv", encoding='utf-8', mode="w", newline='') as tsvfile:
@@ -36,7 +36,7 @@ def calc_precision(annotations1:list, annotations2:list) -> float:
 
 
 if __name__ == "__main__":
-    #text = load_article("TP11/article.txt") 
-    #annotations = annotate_text(text)
-    #write_annotations(annotations)
-    loaded_tsv = load_tsv("TP11/annotations_manuelles.tsv")
+    text = load_article("TP11/article.txt") 
+    annotations_automatiques = annotate_text(text)
+    write_annotations(annotations_automatiques)
+    annotations_manuelles = load_tsv("TP11/annotations_manuelles.tsv")
