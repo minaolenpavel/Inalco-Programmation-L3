@@ -1,6 +1,5 @@
 import spacy, csv
 from utils11 import *
-from itertools import zip_longest
 
 def load_article(path:str) -> list:
     article = []
@@ -33,14 +32,28 @@ def annotate_text(text:str) -> list:
         annotations.append(annotation)
     return annotations
 
-def calc_precision() -> float:
-    pass
+def calc_precision(binary_class:dict) -> float:
+    """
+    Calcule la précision arrondie à deux décimales
+    """
+    precision = binary_class["TP"]/(binary_class["FP"]+binary_class["TP"])
+    return round(precision, 2)
 
-def calc_recall() -> float:
-    pass
+def calc_recall(binary_class:dict) -> float:
+    """
+    Calcule le rappel arrondi à deux décimales
+    """
+    recall = binary_class["TP"]/(binary_class["TP"]+binary_class["FN"])
+    return round(recall, 2)
 
-def calc_fmeasure() -> float:
-    pass
+def calc_fmeasure(binary_class:dict) -> float:
+    """
+    Calcule la f-mesure arrondie à deux décimales
+    """
+    precision:float = calc_precision(binary_class)
+    recall:float = calc_recall(binary_class)
+    fmeasure = (2*precision*recall)/(precision+recall)
+    return round(fmeasure, 2)
 
 def count_binary_class(results:list) -> dict:
     """
@@ -81,4 +94,7 @@ if __name__ == "__main__":
     annotations_auto = load_tsv("annotations_automatiques.tsv")
     annotations_manuelles = load_tsv("annotations_manuelles.tsv")
     test = match_tokens(annotations_manuelles, annotations_auto)
-    binary_classes = count_binary_class(test)
+    binary_class = count_binary_class(test)
+    print(calc_precision(binary_class))
+    print(calc_recall(binary_class))
+    print(calc_fmeasure(binary_class))
