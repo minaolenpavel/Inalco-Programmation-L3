@@ -59,8 +59,14 @@ def count_binary_class(results:list) -> dict:
     """
     Fonction qui compte le nombre de TP, FP, FN.
     """
-    true_pos:int = len([x for x in results if x[0] is not None and x[1] is not None])
+    true_pos_list:list = [x for x in results if x[0] is not None and x[1] is not None]
     false_pos:int = len([x for x in results if x[0] is None])
+    true_pos:int = 0
+    for x in true_pos_list:
+        if x[0][1].strip().lower() == x[1][1].strip().lower():
+            true_pos+=1
+        else:
+            false_pos+=1
     false_neg:int = len([x for x in results if x[1] is None])
     return {
         "TP" : true_pos,
@@ -93,8 +99,8 @@ if __name__ == "__main__":
     #write_annotations(annotations_automatiques)
     annotations_auto = load_tsv("annotations_automatiques.tsv")
     annotations_manuelles = load_tsv("annotations_manuelles.tsv")
-    test = match_tokens(annotations_manuelles, annotations_auto)
-    binary_class = count_binary_class(test)
+    list_tokens = match_tokens(annotations_manuelles, annotations_auto)
+    binary_class = count_binary_class(list_tokens)
     print(calc_precision(binary_class))
     print(calc_recall(binary_class))
     print(calc_fmeasure(binary_class))
