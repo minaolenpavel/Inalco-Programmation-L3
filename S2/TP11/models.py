@@ -4,3 +4,4 @@ class Annotation:
         self.auto_text = ""
         self.manuel_tag = ""
         self.auto_tag = ""
+        self.category = ""

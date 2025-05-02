@@ -21,10 +21,10 @@ UE	ORG
 Etat	LOC
 Serbie	LOC
 UE	ORG
-Freedom House	MISC
+"Freedom House	M"	ISC
 Reporters sans frontières	ORG
 Loïc Trégourès	PER
-Serbes	MISC
+"Serbes	M"	ISC
 UE	ORG
 Aleksandar Vucic	PER
 Géorgie	LOC
@@ -58,8 +58,8 @@ Aleksandar Vucic	PER
 Loïc Trégourès	PER
 Maïdan	LOC
 Ukraine	LOC
-Premier ministre Milos Vucevic	MISC
-coup d'Etat	MISC
+"Premier ministre Milos Vucevic	M"	ISC
+"coup d'Etat	M"	ISC
 Kragujevac	LOC
 Serbie	LOC
 ANDREJ	ORG
