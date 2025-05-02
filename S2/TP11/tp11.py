@@ -1,5 +1,4 @@
 import spacy, csv
-from models import *
 from utils11 import *
 from itertools import zip_longest
 
@@ -43,50 +42,36 @@ def calc_recall() -> float:
 def calc_fmeasure() -> float:
     pass
 
-def create_annotation(annotation_manuelle:list, annotation_auto:str)-> Annotation:
-    annotation = Annotation(annotation_manuelle[0], 
-                            annotation_auto[0], 
-                            annotation_manuelle[1], 
-                            annotation_auto[1])
-    return annotation
+def count_binary_class(results:list) -> dict:
+    """
+    Fonction qui compte le nombre de TP, FP, FN.
+    """
+    true_pos:int = len([x for x in results if x[0] is not None and x[1] is not None])
+    false_pos:int = len([x for x in results if x[0] is None])
+    false_neg:int = len([x for x in results if x[1] is None])
+    return {
+        "TP" : true_pos,
+        "FP" : false_pos,
+        "FN" : false_neg
+    }
 
 def match_tokens(annotations_manuelles:list, annotations_auto:list) -> list:
-    final_list = []
-    orphelins_manuels = []
-    orphelins_auto = []
-    for manuelle, auto in zip_longest(annotations_manuelles, annotations_auto):
-        # Les listes peuvent être de longueurs différentes
-        # Donc si in élément est None, il devient orphelin, félicitations à lui.
-        if manuelle is None:
-            orphelins_auto.append(auto)
-            continue
-        elif auto is None:
-            orphelins_manuels.append(manuelle)
-            continue
-        if manuelle[0].lower() == auto[0].lower():
-            final_list.append(create_annotation(manuelle, auto))
+    """
+    Fais des paires d'annotation auto et manuelles
+    """
+    list_tokens = []
+    auto_copy = annotations_auto.copy()
+    for am in annotations_manuelles:
+        for i, aa in enumerate(auto_copy):
+            if am[0].strip().lower() == aa[0].strip().lower():
+                list_tokens.append((am, aa))
+                auto_copy.pop(i)
+                break
         else:
-            max_str = max(manuelle[0], auto[0], key=len)
-            min_str = min(manuelle[0], auto[0], key=len)
-            if min_str in max_str:
-                final_list.append(create_annotation(manuelle, auto))
-            else:
-                if is_substring_in_list(manuelle[0], orphelins_auto):
-                    index:tuple = find_substring_index(manuelle[0], orphelins_auto)
-                    pair = orphelins_auto.pop(index[0])
-                    final_list.append(create_annotation(manuelle, pair))
-                elif is_substring_in_list(auto[0], orphelins_manuels):
-                    index:tuple = find_substring_index(auto[0], orphelins_manuels)
-                    pair = orphelins_manuels.pop(index[0])
-                    final_list.append(create_annotation(auto, pair))
-                else:
-                    orphelins_auto.append(auto)
-                    orphelins_manuels.append(manuelle)
-    print("orphelins auto", orphelins_auto)
-    print()
-    print("orphelins manuels", orphelins_manuels)
-    print()
-    return final_list
+            list_tokens.append((am, None))
+    for aa in auto_copy:
+        list_tokens.append((None, aa))
+    return list_tokens
 
 
 if __name__ == "__main__":
@@ -96,6 +81,4 @@ if __name__ == "__main__":
     annotations_auto = load_tsv("annotations_automatiques.tsv")
     annotations_manuelles = load_tsv("annotations_manuelles.tsv")
     test = match_tokens(annotations_manuelles, annotations_auto)
-    for i in test:
-        print(i)
-    
+    binary_classes = count_binary_class(test)

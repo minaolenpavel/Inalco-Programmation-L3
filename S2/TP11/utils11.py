@@ -8,7 +8,7 @@ def correct_tsv(path:str) -> None:
     with open(path, encoding='utf-8', mode="r") as tsv_file:
         for line in tsv_file:
             line = line.strip()
-            file_list.append((line[:-3].strip(), line[-3:]))
+            file_list.append((line[:-4].strip(), line[-4:].strip()))
     with open(path, encoding='utf-8', mode='w') as tsv_file:
         writer = csv.writer(tsv_file, delimiter='\t', lineterminator='\n')
         for l in file_list:
