@@ -1,73 +1,79 @@
-Belgrade	LOC     TP
-Aleksandar Vucic	PER     TP
-Belgrade	LOC     TP
-Slobodan Milosevic	PER     TP
-Loïc Trégourès	PER     TP
-Balkans	LOC     TP
-gare de Novi Sad	LOC     FP
-BTP	ORG     FP
-Ivica Mladenovic	PER     TP
-université de Belgrade	LOC     TP
-Ivica Mladenovic	PER     TP
-franceinfo	ORG     TP
-Ivica Mladenovic	PER     TP
-Ivica Mladenovic	PER     FN
-franceinfo	ORG     TP
-Sophie Gueudet	PER     TP
-Ecole supérieure Sainte-Anne de Pise	LOC     FP
-ex-Yougoslavie	ORG     FP
-Etat	LOC     FN
-UE	ORG     TP
-Etat	LOC     FN
-Serbie	LOC     TP
-UE	ORG     TP
-Freedom House	MISC    FP
-Reporters sans frontières	ORG     TP
-Loïc Trégourès	PER     TP
-Serbes	MISC    TP
-UE	ORG     TP
-Aleksandar Vucic	PER     TP
-Géorgie	LOC     TP
-Belgrade	LOC     TP     
-Bruxelles	LOC     TP
-UE	ORG     TP
-Serbie	LOC     TP
-Rio Tinto	ORG     TP
-Jadar	LOC     TP
-UE	ORG     TP
-Ivica Mladenovic	PER     TP
-Aleksandar Vucic	PER     TP
-Union européenne	ORG     TP
-Occident	LOC     TP
-Loïc Trégourès	PER     TP
-UE	ORG     TP
-Copenhague	LOC     TP
-Russie	LOC     TP
-UE	ORG     TP
-Sophie Gueudet	PER     TP
-franceinfo	ORG     TP
-Russie	LOC     TP
-Géorgie	LOC     TP
-Etat	LOC     FP
-Sophie Gueudet	PER     TP
-UE	ORG     TP
-Russie	LOC     TP
-Balkans	LOC     TP
-Reste	PER     FP
-Aleksandar Vucic	PER     TP
-Loïc Trégourès	PER     TP
-Maïdan	LOC     TP
-Ukraine	LOC     TP
-Premier ministre Milos Vucevic	MISC    FP
-coup d'Etat	MISC    FP
-Kragujevac	LOC     TP
-Serbie	LOC     TP
-ANDREJ	ORG     FP
-ISAKOVIC	ORG     FP
-AFP	ORG     TP
-Ivica Mladenovic	PER     TP
-Ivica Mladenovic	PER     TP
-franceinfo  Les tentatives	ORG     FP
-Sophie Gueudet	PER     TP
-Davimo Beograd	PER     FP
-Vert-Gauche	ORG     TP
+Belgrade	LOC	LOC	TP
+Aleksandar Vucic	PER	PER	TP
+Belgrade	LOC	LOC	TP
+Slobodan Milosevic	PER	PER	TP
+Loïc Trégourès	PER	PER	TP
+Balkans	LOC	LOC	TP
+Novi Sad	LOC		FN
+Ivica Mladenovic	PER	PER	TP
+université de Belgrade	ORG	LOC	FP
+Ivica Mladenovic	PER	PER	TP
+franceinfo	ORG	ORG	TP
+Ivica Mladenovic	PER	PER	TP
+Ivica Mladenovic	PER	PER	TP
+franceinfo	ORG	ORG	TP
+Sophie Gueudet	PER	PER	TP
+Ecole supérieure Sainte-Anne de Pise	ORG	LOC	FP
+ex-Yougoslavie	LOC	ORG	FP
+UE	ORG	ORG	TP
+Serbie	LOC	LOC	TP
+UE	ORG	ORG	TP
+Freedom House	ORG	MISC	FP
+Reporters sans frontières	ORG	ORG	TP
+Loïc Trégourès	PER	PER	TP
+Serbes	MISC	MISC	TP
+UE	ORG	ORG	TP
+Aleksandar Vucic	PER	PER	TP
+Géorgie	LOC	LOC	TP
+Belgrade	LOC	LOC	TP
+Bruxelles	LOC	LOC	TP
+UE	ORG	ORG	TP
+Serbie	LOC	LOC	TP
+Rio Tinto	ORG	ORG	TP
+Jadar	LOC	LOC	TP
+UE	ORG	ORG	TP
+Ivica Mladenovic	PER	PER	TP
+Aleksandar Vucic	PER	PER	TP
+Union européenne	ORG	ORG	TP
+Occident	LOC	LOC	TP
+Loïc Trégourès	PER	PER	TP
+UE	ORG	ORG	TP
+Copenhague	LOC	LOC	TP
+Russie	LOC	LOC	TP
+UE	ORG	ORG	TP
+Sophie Gueudet	PER	PER	TP
+franceinfo	ORG	ORG	TP
+Russie	LOC	LOC	TP
+Géorgie	LOC	LOC	TP
+Etat	MISC	LOC	FP
+Sophie Gueudet	PER	PER	TP
+UE	ORG	ORG	TP
+Russie	LOC	LOC	TP
+Balkans	LOC	LOC	TP
+Aleksandar Vucic	PER	PER	TP
+Loïc Trégourès	PER	PER	TP
+Maïdan	LOC	LOC	TP
+Ukraine	LOC	LOC	TP
+Premier ministre	MISC		FN
+Milos Vucevic	PER		FN
+Etat	MISC	LOC	FP
+Kragujevac	LOC	LOC	TP
+Serbie	LOC	LOC	TP
+ANDREJ ISAKOVIC	PER		FN
+AFP	ORG	ORG	TP
+Ivica Mladenovic	PER	PER	TP
+Ivica Mladenovic	PER	PER	TP
+franceinfo	ORG		FN
+Sophie Gueudet	PER	PER	TP
+Ne Davimo Beograd	ORG		FN
+Vert-Gauche	ORG	ORG	TP
+gare de Novi Sad		LOC	FP
+BTP		ORG	FP
+Etat		LOC	FP
+Reste		PER	FP
+Premier ministre Milos Vucevic		MISC	FP
+coup d'Etat		MISC	FP
+ANDREJ		ORG	FP
+ISAKOVIC		ORG	FP
+franceinfo  Les tentatives		ORG	FP
+Davimo Beograd		PER	FP

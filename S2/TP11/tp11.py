@@ -1,7 +1,10 @@
 import spacy, csv
 from utils11 import *
 
-def load_article(path:str) -> list:
+def load_txt(path:str) -> str:
+    """
+    Ouvre un fichier .txt et renvoie le contenu sous forme d'une chaine de caractères 
+    """
     article = []
     with open(path, mode="r", encoding="utf-8") as file:
         for line in file:
@@ -10,6 +13,9 @@ def load_article(path:str) -> list:
     return article
 
 def load_tsv(path:str) -> list:
+    """
+    Ouvre un fichier .tsv
+    """
     loaded_tsv = []
     with open(path, encoding='utf-8', mode='r') as tsv_file:
         reader = csv.reader(tsv_file, delimiter="\t")
@@ -18,12 +24,18 @@ def load_tsv(path:str) -> list:
     return loaded_tsv
 
 def write_annotations(annotations:list) -> None:
+    """
+    Ecrit les annotations de Spacy dans un fichier .tsv
+    """
     with  open("annotations_automatiques.tsv", encoding='utf-8', mode="w", newline='') as tsv_file:
         writer = csv.writer(tsv_file, delimiter='\t', lineterminator='\n')
         for a in annotations:
             writer.writerow(a)
 
 def annotate_text(text:str) -> list:
+    """
+    Utilise Spacy pour annoter le corpus et renvoie les entités nommées
+    """
     nlp = spacy.load("fr_core_news_md")
     doc = nlp(text)
     annotations = []
@@ -59,6 +71,10 @@ def count_binary_class(results:list) -> dict:
     """
     Fonction qui compte le nombre de TP, FP, FN.
     """
+    def print_data(results:list):
+        for i, (manual, auto) in enumerate(results):
+            print(f"{i:03d}: MANUAL={manual} | AUTO={auto}")
+    
     true_pos_list:list = [x for x in results if x[0] is not None and x[1] is not None]
     false_pos:int = len([x for x in results if x[0] is None])
     true_pos:int = 0
@@ -94,13 +110,14 @@ def match_tokens(annotations_manuelles:list, annotations_auto:list) -> list:
 
 
 if __name__ == "__main__":
-    #text = load_article("article.txt") 
+    #text = load_txt("article.txt") 
     #annotations_automatiques = annotate_text(text)
     #write_annotations(annotations_automatiques)
     annotations_auto = load_tsv("annotations_automatiques.tsv")
     annotations_manuelles = load_tsv("annotations_manuelles.tsv")
     list_tokens = match_tokens(annotations_manuelles, annotations_auto)
     binary_class = count_binary_class(list_tokens)
+    print(binary_class)
     print(calc_precision(binary_class))
     print(calc_recall(binary_class))
     print(calc_fmeasure(binary_class))
