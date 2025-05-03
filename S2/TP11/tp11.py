@@ -23,12 +23,12 @@ def load_tsv(path:str) -> list:
             loaded_tsv.append(row)
     return loaded_tsv
 
-def write_annotations(annotations:list) -> None:
+def write_tsv(annotations:list, path:str, delimiter="\t") -> None:
     """
     Ecrit les annotations de Spacy dans un fichier .tsv
     """
-    with  open("annotations_automatiques.tsv", encoding='utf-8', mode="w", newline='') as tsv_file:
-        writer = csv.writer(tsv_file, delimiter='\t', lineterminator='\n')
+    with  open(path, encoding='utf-8', mode="w", newline='') as tsv_file:
+        writer = csv.writer(tsv_file, delimiter=delimiter, lineterminator='\n')
         for a in annotations:
             writer.writerow(a)
 
@@ -108,12 +108,19 @@ def match_tokens(annotations_manuelles:list, annotations_auto:list) -> list:
         list_tokens.append((None, aa))
     return list_tokens
 
+def write_mistakes(corrigee:list) -> None:
+    mistakes = []
+    for i in corrigee:
+        if i[-1] != "TP":
+            mistakes.append(i)
+    write_tsv(mistakes, "errors.tsv", ";")
+
+
 
 if __name__ == "__main__":
-    #text = load_txt("article.txt") 
-    #annotations_automatiques = annotate_text(text)
-    #write_annotations(annotations_automatiques)
-    annotations_auto = load_tsv("annotations_automatiques.tsv")
+    text = load_txt("article.txt") 
+    annotations_auto = annotate_text(text)
+    write_tsv(annotations_auto, "annotations_automatiques.tsv")
     annotations_manuelles = load_tsv("annotations_manuelles.tsv")
     list_tokens = match_tokens(annotations_manuelles, annotations_auto)
     binary_class = count_binary_class(list_tokens)

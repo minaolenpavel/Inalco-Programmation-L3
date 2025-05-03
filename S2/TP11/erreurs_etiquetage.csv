@@ -1,0 +1,22 @@
+Token                               ; Tag manuel; Tag auto; Classification; Type erreur
+Novi Sad                            ; LOC       ;         ; FN            ; Délétion
+université de Belgrade              ; ORG       ; LOC     ; FP            ; Mauvais tag
+Ecole supérieure Sainte-Anne de Pise; ORG       ; LOC     ; FP            ; Mauvais tag
+ex-Yougoslavie                      ; LOC       ; ORG     ; FP            ; Mauvais tag
+Freedom House                       ; ORG       ; MISC    ; FP            ; Mauvais tag
+Etat                                ; MISC      ; LOC     ; FP            ; Mauvais tag
+Premier ministre                    ; MISC      ;         ; FN            ; Délétion
+Milos Vucevic                       ; PER       ;         ; FN            ; Délétion
+Etat                                ; MISC      ; LOC     ; FP            ; Mauvais tag
+ANDREJ ISAKOVIC                     ; PER       ;         ; FN            ; Délétion
+franceinfo                          ; ORG       ;         ; FN            ; Délétion
+Ne Davimo Beograd                   ; ORG       ;         ; FN            ; Délétion
+gare de Novi Sad                    ;           ; LOC     ; FP            ; Insertion
+BTP                                 ;           ; ORG     ; FP            ; Insertion
+Reste                               ;           ; PER     ; FP            ; Insertion
+Premier ministre Milos Vucevic      ;           ; MISC    ; FP            ; Insertion
+coup d'Etat                         ;           ; MISC    ; FP            ; Insertion
+ANDREJ                              ;           ; ORG     ; FP            ; Insertion
+ISAKOVIC                            ;           ; ORG     ; FP            ; Insertion
+franceinfo  Les tentatives          ;           ; ORG     ; FP            ; Insertion
+Davimo Beograd                      ;           ; PER     ; FP            ; Insertion

@@ -1,6 +1,9 @@
+"""
+Fichier qui m'a aidé à faire certaines tâches plus facilement pour finir ce TP.
+"""
 import csv
 
-def correct_tsv(path:str) -> None:
+def correct_tsv(path:str, delimiter:str="\t") -> None:
     """
     Corrige les TSV pour que les colonnes soient bien alignées.
     """
@@ -10,7 +13,7 @@ def correct_tsv(path:str) -> None:
             line = line.strip()
             file_list.append((line[:-4].strip(), line[-4:].strip()))
     with open(path, encoding='utf-8', mode='w') as tsv_file:
-        writer = csv.writer(tsv_file, delimiter='\t', lineterminator='\n')
+        writer = csv.writer(tsv_file, delimiter=delimiter, lineterminator='\n')
         for l in file_list:
             writer.writerow(l)
 
@@ -32,4 +35,4 @@ def find_substring_index(target, double_list:list) -> tuple:
 
 
 if __name__ == "__main__":
-    correct_tsv("annotations_manuelles.tsv")
+    correct_tsv("errors.tsv")
