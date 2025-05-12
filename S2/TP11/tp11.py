@@ -113,7 +113,7 @@ def write_mistakes(corrigee:list) -> None:
     for i in corrigee:
         if i[-1] != "TP":
             mistakes.append(i)
-    write_tsv(mistakes, "errors.tsv", ";")
+    write_tsv(mistakes, "errors.csv", ";")
 
 
 

@@ -19,7 +19,7 @@ def correct_tsv(path:str, delimiter:str="\t") -> None:
 
 def is_substring_in_list(target:str, double_list:list) -> bool:
     """
-    Répond à la question 'est-ce que le mot dans dans une des sous-listes de cette liste ?'
+    Répond à la question 'est-ce que le mot est dans une des sous-listes de cette liste ?'
     """
     return any(target in s for sublist in double_list for s in sublist)
 
