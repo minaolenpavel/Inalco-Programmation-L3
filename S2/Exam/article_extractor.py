@@ -45,14 +45,12 @@ def scrap_article(url:str) -> list:
     # Fermeture du Firefox
     # En principe ce n'est pas nécessaire de le faire sur une machine personnelle mais si le script venait à être utilisé sur un serveur via un scronjob, cela pourrait très vite causer des problèmes. 
     driver.close()
-
     return " ".join(article_text)
 
 if __name__ == "__main__":
     # Articles sample
-
     article = scrap_article("https://www.rfi.fr/fr/europe/20250524-crise-politique-en-serbie-des-universitaires-lancent-une-p%C3%A9tition-pour-des-l%C3%A9gislatives-anticip%C3%A9es")
     print(article)
-    #scrap_article("https://www.leparisien.fr/loiret-45/cette-ville-du-loiret-met-en-vente-une-maisona-0-euro-25-04-2025-KLRQ5QUNUJHUXGY5BADFPZGBWY.php")
-    #scrap_article("https://www.rfi.fr/en/international/20250524-macron-heads-to-vietnam-as-france-seeks-bigger-role-in-indo-pacific")
-    #scrap_article("https://www.lemonde.fr/international/article/2025/04/15/manifestations-en-serbie-les-etudiants-bloquent-la-radio-television-publique_6596235_3210.html")
+    #article = scrap_article("https://www.leparisien.fr/loiret-45/cette-ville-du-loiret-met-en-vente-une-maisona-0-euro-25-04-2025-KLRQ5QUNUJHUXGY5BADFPZGBWY.php")
+    # article = scrap_article("https://www.rfi.fr/en/international/20250524-macron-heads-to-vietnam-as-france-seeks-bigger-role-in-indo-pacific")
+    # article = scrap_article("https://www.lemonde.fr/international/article/2025/04/15/manifestations-en-serbie-les-etudiants-bloquent-la-radio-television-publique_6596235_3210.html")
