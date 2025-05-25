@@ -2,9 +2,9 @@ import csv
 
 class Token:
     def __init__(self, token):
-        self.lemma = token.lemma_
-        self.pos_tag = token.pos_
-        self.form = token.text
+        self.lemma = token.lemma_.strip()
+        self.pos_tag = token.pos_.strip()
+        self.form = token.text.strip()
 
 class Phrase:
     _id = -1
@@ -24,7 +24,7 @@ class Article:
         """
         HEADERS = ["forme", "pos_tag", "lemme", "id_phrase"]
         with open(path, mode='w', encoding='utf-8', newline='') as csv_file:
-            writer = csv.writer(csv_file, delimiter=";")
+            writer = csv.writer(csv_file, delimiter=";", quoting = csv.QUOTE_MINIMAL)
             writer.writerow(HEADERS)
             for p in self.phrases:
                 for t in p.tokens:
