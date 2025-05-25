@@ -19,9 +19,9 @@ def split_sentences(text:str) -> list:
     pattern = r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s'
     return re.split(pattern, text)
 
-def tokenize_phrase(phrase:str) -> list:
+def tokenize_phrase(phrase:str) -> Phrase:
     """
-    Formalise la phrase en tokens avec spacy ainsi que les classes de models.py
+    Formalise la phrase d'entrée en tokens avec spacy ainsi que les classes de models.py
     """
     #phrase = "Crise politique en Serbie: des universitaires lancent une pétition pour des législatives anticipées"
     doc = annotate_phrase(phrase)
@@ -37,11 +37,13 @@ def tokenize_phrase(phrase:str) -> list:
 
 if __name__ == "__main__":
     start = time.time()
-    article = article_extractor.scrap_article("https://www.rfi.fr/fr/europe/20250524-crise-politique-en-serbie-des-universitaires-lancent-une-p%C3%A9tition-pour-des-l%C3%A9gislatives-anticip%C3%A9es")
+    url = "https://www.rfi.fr/fr/europe/20250524-crise-politique-en-serbie-des-universitaires-lancent-une-p%C3%A9tition-pour-des-l%C3%A9gislatives-anticip%C3%A9es"
+    article = article_extractor.scrap_article(url)
     article = split_sentences(article)
-    for i in article[:5]:
-        print(tokenize_phrase(i))
-
-
+    tokenized_phrases_article = []
+    for p in article:
+        phrase = tokenize_phrase(p)
+    tokenized_article = Article(url, tokenized_phrases_article)
     end = time.time()
+    breakpoint()
     print(end-start)

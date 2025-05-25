@@ -10,3 +10,8 @@ class Phrase:
         Phrase._id +=1
         self.ID = Phrase._id
         self.tokens = tokenized_phrase
+
+class Article:
+    def __init__(self, URL:str, phrases:list):
+        self.URL = URL
+        self.phrases = phrases
