@@ -44,7 +44,7 @@ if __name__ == "__main__":
     article = article_extractor.scrap_article(url)
     article = utils.split_sentences(article)
     tokenized_article = tokenize_article(article)
-    tokenized_article.export_csv("Exam/serbie_rfi.csv")
+    tokenized_article.to_json("serbie_rfi.json")
 
     stopwatch.stop()
     print(stopwatch.total_time)

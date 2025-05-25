@@ -31,3 +31,21 @@ def import_csv(path:str) -> list:
         for line in csv_file:
             file.append(line.strip().split(";"))
     return file[1:]
+
+def reform_sentences(article:list) -> list:
+    phrases_str = []
+    current_phrase = ""
+    current_id = article[0][-1]
+    for i, p in enumerate(article):
+        if p[-1] == current_id:
+            if current_phrase.endswith("'") or current_phrase.endswith("’") or current_phrase.endswith("("):
+                current_phrase+=p[0]
+            elif any(punct in p[0] for punct in [".",","," ",")","%"]):
+                current_phrase+=p[0]
+            else:
+                current_phrase+=f" {p[0]}"
+        else:
+            phrases_str.append(current_phrase.strip())
+            current_id = p[-1]
+            current_phrase = p[0]
+    return phrases_str
