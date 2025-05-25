@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
-import time
+import utils, time
 
 
 def scrap_article(url:str) -> list:
@@ -9,6 +9,8 @@ def scrap_article(url:str) -> list:
     Fonction qui scrappe le contenu de l'article donné en URL et renvoie les données.
     Fonctionne avec LeParisien, RFI et LeMonde.
     """
+    stopwatch = utils.Stopwatch()
+    stopwatch.start()
     # Initialisation de Selenium
     service = Service(executable_path=r"C:\Program Files (x86)\geckodriver.exe")
     options = webdriver.FirefoxOptions()
@@ -45,6 +47,8 @@ def scrap_article(url:str) -> list:
     # Fermeture du Firefox
     # En principe ce n'est pas nécessaire de le faire sur une machine personnelle mais si le script venait à être utilisé sur un serveur via un scronjob, cela pourrait très vite causer des problèmes. 
     driver.close()
+    stopwatch.stop()
+    print(f"l'article a été extrait en {stopwatch.total_time} secondes !")
     return " ".join(article_text)
 
 if __name__ == "__main__":
