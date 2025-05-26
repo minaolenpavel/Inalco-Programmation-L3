@@ -23,10 +23,10 @@ def tokenize_phrase(phrase:str) -> Phrase:
         token = Token(t)
         tokenized_phrase.append(token)
     phrase = Phrase(tokenized_phrase)
-    print(phrase.ID)
+    #print(phrase.ID)
     return phrase
 
-def tokenize_article(article:list) -> Article:
+def tokenize_article(article:list, url:str) -> Article:
     """
     Tokenize un article grâce à la fonction qui tokenize une phrase.
     """
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     article = article_extractor.scrap_article(url)
     article = utils.split_sentences(article)
     tokenized_article = tokenize_article(article)
-    tokenized_article.to_json("serbie_rfi.json")
-    
+    tokenized_article.export_csv("serbie_rfi.csv")
+
     stopwatch.stop()
     print(stopwatch.total_time)
