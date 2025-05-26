@@ -1,4 +1,4 @@
-import time, re, csv
+import time, re, csv, json
 from models import *
 
 class Stopwatch:
@@ -49,3 +49,9 @@ def reform_sentences(article:list) -> list:
             current_id = p[-1]
             current_phrase = p[0]
     return phrases_str
+
+def json_to_article(path:str):
+    article_raw = None
+    with open(path, encoding='utf-8', mode='r') as json_file:
+        article_raw = json.load(json_file)
+    return article_raw

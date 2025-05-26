@@ -1,4 +1,4 @@
-import csv, json
+import csv, json, utils
 
 class Token:
     def __init__(self, token):
@@ -17,7 +17,7 @@ class Phrase:
         self.tokens = tokenized_phrase
     
     def to_dict(self) -> dict :
-        return {"ID":self.ID, "tokens":[t.to_dict for t in self.tokens]}
+        return {"ID":self.ID, "tokens":[t.to_dict() for t in self.tokens]}
 
 class Article:
     def __init__(self, URL:str, phrases:list):
@@ -37,12 +37,16 @@ class Article:
                     writer.writerow([t.form, t.pos_tag, t.lemma, p.ID])
     
     def to_dict(self) -> dict:
-        return {'url': self.URL, "phrases": [p.to_dict for p in self.phrases]}
+        return {'url': self.URL, "phrases": [p.to_dict() for p in self.phrases]}
     
     def to_json(self, path:str) -> None:
         data = self.to_dict()
         with open(path, encoding='utf-8', mode ="w") as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4)
-
+    
+def from_dict(path:str):
+    test = utils.json_to_article(path)
+    breakpoint()
+    print(test)
 
     
